@@ -1,6 +1,6 @@
 'use client';
 
-import Masonry from './ui/Masonry';
+import { FeatureCarousel } from './ui/feature-carousel';
 
 const CHECK_ICON = 'https://cdn.prod.website-files.com/6720dd1ab6df0da205830ab1/686cc068490683bbb3377d04_bullet-list.svg';
 
@@ -19,15 +19,16 @@ const rightProjects = [
   '9. Muddenahalli 600 bedHospital 5th wing construction.',
 ];
 
-const masonryItems = [
-  { id: '1', img: '/pot/1.png', url: 'https://wa.me/919743399992', height: 380 },
-  { id: '2', img: '/pot/2.png', url: 'https://wa.me/919743399992', height: 420 },
-  { id: '3', img: '/pot/3.png', url: 'https://wa.me/919743399992', height: 280 },
-  { id: '4', img: '/pot/4.png', url: 'https://wa.me/919743399992', height: 350 },
-  { id: '5', img: '/pot/5.png', url: 'https://wa.me/919743399992', height: 400 },
-  { id: '6', img: '/pot/6.png', url: 'https://wa.me/919743399992', height: 300 },
-  { id: '7', img: '/pot/7.png', url: 'https://wa.me/919743399992', height: 360 },
+const carouselImages = [
+  { src: '/pot/1.png', alt: 'Residential construction Budigere' },
+  { src: '/pot/2.png', alt: 'Restaurant construction Chikkaballapur' },
+  { src: '/pot/3.png', alt: 'Motorcycle showroom Sullibelle' },
+  { src: '/pot/4.png', alt: 'Residential construction Avathi' },
+  { src: '/pot/5.png', alt: 'Residential interior Avathi' },
+  { src: '/pot/6.png', alt: 'Commercial building Hosa Road' },
+  { src: '/pot/7.png', alt: 'Residential project Jigani' },
 ];
+
 
 export default function FreedomSection({ theme }: { theme: 'light' | 'dark' }) {
 
@@ -125,26 +126,16 @@ export default function FreedomSection({ theme }: { theme: 'light' | 'dark' }) {
           ))}
         </div>
 
-        {/* Center Column — Masonry Gallery */}
+        {/* Center Column — Feature Carousel */}
         <div 
           className="order-first lg:order-none w-full max-w-[340px] px-2 mx-auto"
-          style={{ alignSelf: 'stretch' }}
+          style={{ alignSelf: 'center' }}
         >
           <div className="w-full relative">
-            <Masonry 
-              items={masonryItems} 
-              columns={2} 
-              ease="power3.out"
-              duration={0.6}
-              stagger={0.05}
-              animateFrom="bottom"
-              scaleOnHover={true}
-              hoverScale={0.96}
-              blurToFocus={true}
-              colorShiftOnHover={false}
-            />
+            <FeatureCarousel images={carouselImages} />
           </div>
         </div>
+
 
         {/* Right Column — Right Projects */}
         <div 
