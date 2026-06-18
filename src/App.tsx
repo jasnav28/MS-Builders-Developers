@@ -31,25 +31,29 @@ function App() {
     setTheme(prev => prev === 'dark' ? 'light' : 'dark');
   };
 
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+
+  const navItems = [
+    { label: 'Home', href: '#vex' },
+    { label: 'About Us', href: '#aboutus' },
+    { label: 'Services', href: '#services' },
+    { label: 'Packages', href: '#packages' },
+    { label: 'Contact Us', href: '#footer' }
+  ];
+
   return (
     <div className="relative min-h-screen bg-black text-white selection:bg-white/30 overflow-y-auto scroll-smooth">
       {/* Global Fixed Header */}
-      <header className="fixed top-0 left-0 right-0 z-[100] px-6 md:px-12 lg:px-16 pt-6">
-        <div className="liquid-glass rounded-xl px-4 py-2 flex items-center justify-between">
+      <header className="fixed top-0 left-0 right-0 z-[100] px-4 md:px-12 lg:px-16 pt-6">
+        <div className="liquid-glass rounded-xl px-4 py-2 flex items-center justify-between relative">
           {/* Left Logo */}
           <div className="text-2xl font-semibold tracking-tight text-white">
             MS
           </div>
           
-          {/* Center Navigation Links */}
+          {/* Center Navigation Links (Desktop only) */}
           <nav className="hidden md:flex items-center gap-8">
-            {[
-              { label: 'Home', href: '#vex' },
-              { label: 'About Us', href: '#aboutus' },
-              { label: 'Services', href: '#services' },
-              { label: 'Packages', href: '#packages' },
-              { label: 'Contact Us', href: '#footer' }
-            ].map((item) => (
+            {navItems.map((item) => (
               <a
                 key={item.label}
                 href={item.href}
@@ -60,12 +64,40 @@ function App() {
             ))}
           </nav>
           
-          {/* Theme Toggle Switch */}
-          <div className="flex items-center">
+          {/* Right Section: Theme Toggle + Mobile Hamburger */}
+          <div className="flex items-center gap-4">
             <Switch checked={theme === 'dark'} onChange={toggleTheme} />
+            
+            {/* Hamburger Button (Mobile only) */}
+            <button
+              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+              className="md:hidden flex flex-col justify-center items-center w-8 h-8 rounded-lg border border-white/10 bg-white/5 hover:bg-white/10 active:scale-95 transition-all focus:outline-none cursor-pointer"
+              aria-label="Toggle Navigation Menu"
+            >
+              <span className={`w-4 h-0.5 bg-white rounded-full transition-all duration-300 ${isMobileMenuOpen ? 'transform rotate-45 translate-y-1' : ''}`} />
+              <span className={`w-4 h-0.5 bg-white rounded-full my-1 transition-all duration-300 ${isMobileMenuOpen ? 'opacity-0 h-0 my-0' : ''}`} />
+              <span className={`w-4 h-0.5 bg-white rounded-full transition-all duration-300 ${isMobileMenuOpen ? 'transform -rotate-45 -translate-y-1' : ''}`} />
+            </button>
           </div>
+
+          {/* Mobile Dropdown Panel (Mobile only) */}
+          {isMobileMenuOpen && (
+            <div className="absolute top-[115%] left-0 right-0 md:hidden liquid-glass rounded-xl p-4 flex flex-col gap-3 border border-white/10 shadow-2xl animate-in fade-in slide-in-from-top-4 duration-200">
+              {navItems.map((item) => (
+                <a
+                  key={item.label}
+                  href={item.href}
+                  onClick={() => setIsMobileMenuOpen(false)}
+                  className="px-4 py-2.5 rounded-lg text-sm text-white/90 hover:bg-white/10 hover:text-white transition-all duration-150"
+                >
+                  {item.label}
+                </a>
+              ))}
+            </div>
+          )}
         </div>
       </header>
+
 
       {/* 1st: VEX Vision */}
       <section id="vex" className="w-full h-screen relative border-b border-white/10">
