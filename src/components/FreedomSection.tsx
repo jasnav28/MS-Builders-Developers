@@ -1,6 +1,7 @@
 'use client';
 
 import { FeatureCarousel } from './ui/feature-carousel';
+import GradientText from './ui/gradient-text';
 
 const CHECK_ICON = 'https://cdn.prod.website-files.com/6720dd1ab6df0da205830ab1/686cc068490683bbb3377d04_bullet-list.svg';
 
@@ -69,19 +70,15 @@ export default function FreedomSection({ theme }: { theme: 'light' | 'dark' }) {
           }}
         >
           Our Portfolio<br />
-          <span 
-            style={{
-              backgroundImage: 'linear-gradient(90deg, rgb(43,167,255), rgb(202,69,255) 50%, rgb(254,136,27))',
-              WebkitBackgroundClip: 'text',
-              backgroundClip: 'text',
-              WebkitTextFillColor: 'transparent',
-              color: 'transparent',
-              paddingBottom: '0.3vw',
-              display: 'inline-block',
-            }}
+          <GradientText
+            colors={["#0512a5", "#EAB308", "#ea5708"]}
+            animationSpeed={19}
+            showBorder={false}
+            className="font-medium bg-transparent cursor-default select-none pb-[0.3vw]"
+            direction="horizontal"
           >
             Here are the done projects
-          </span>
+          </GradientText>
         </h2>
       </div>
 

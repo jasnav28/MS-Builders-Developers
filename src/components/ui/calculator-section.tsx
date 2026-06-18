@@ -363,7 +363,7 @@ export function CalculatorSection() {
                       <span className="font-semibold text-foreground dark:text-white">Rs {prices.premiumFirm.toLocaleString('en-IN')}</span>
                     </div>
                     <div>
-                      <span className="block text-[10px] uppercase text-gray-400">Local Contractors</span>
+                      <span className="block text-[10px] uppercase text-gray-400">Unskilled Contractors</span>
                       <span className="font-semibold text-foreground dark:text-white">Rs {prices.localContractor.toLocaleString('en-IN')}</span>
                     </div>
                   </div>

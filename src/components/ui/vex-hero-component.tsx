@@ -126,32 +126,32 @@ export const VexHero: React.FC<{ theme: 'light' | 'dark' }> = ({ theme }) => {
 
           {/* Tagline in one line, morphing, below the heading */}
           <FadeIn delay={700} duration={1000}>
-            <div className="flex flex-row items-center justify-center text-white font-extrabold uppercase tracking-[0.3em] text-sm sm:text-base md:text-lg lg:text-xl drop-shadow-md select-none gap-x-1 sm:gap-x-3 md:gap-x-4">
+            <div className="flex flex-row items-center justify-center text-white font-extrabold tracking-[0.3em] text-sm sm:text-base md:text-lg lg:text-xl drop-shadow-md select-none gap-x-1 sm:gap-x-3 md:gap-x-4">
               <GooeyText
-                texts={["DREAM", "VISION", "CONCEPT", "IMAGINE"]}
+                texts={["Dream"]}
                 morphTime={1.2}
                 cooldownTime={1.5}
-                className="w-[100px] sm:w-[130px] md:w-[160px] lg:w-[200px] h-[1.5em] inline-block"
+                className="w-[75px] sm:w-[95px] md:w-[120px] lg:w-[145px] h-[1.5em] inline-block"
                 containerClassName="h-full w-full"
-                textClassName="text-sm sm:text-base md:text-lg lg:text-xl font-extrabold tracking-[0.3em] text-white uppercase"
+                textClassName="text-sm sm:text-base md:text-lg lg:text-xl font-extrabold tracking-[0.3em] text-white"
               />
-              <span className="text-white select-none">&nbsp;</span>
+              <span className="text-white select-none mx-1 sm:mx-2 md:mx-3">.</span>
               <GooeyText
-                texts={["DESIGN", "PLAN", "CRAFT", "CREATE"]}
+                texts={["Design"]}
                 morphTime={1.2}
                 cooldownTime={1.5}
-                className="w-[90px] sm:w-[120px] md:w-[150px] lg:w-[180px] h-[1.5em] inline-block"
+                className="w-[90px] sm:w-[115px] md:w-[140px] lg:w-[170px] h-[1.5em] inline-block"
                 containerClassName="h-full w-full"
-                textClassName="text-sm sm:text-base md:text-lg lg:text-xl font-extrabold tracking-[0.3em] text-white uppercase"
+                textClassName="text-sm sm:text-base md:text-lg lg:text-xl font-extrabold tracking-[0.3em] text-white"
               />
-              <span className="text-white select-none">&nbsp;</span>
+              <span className="text-white select-none mx-1 sm:mx-2 md:mx-3">.</span>
               <GooeyText
-                texts={["DELIVER", "BUILD", "COMPLETE", "EXECUTE"]}
+                texts={["Deliver"]}
                 morphTime={1.2}
                 cooldownTime={1.5}
-                className="w-[110px] sm:w-[145px] md:w-[180px] lg:w-[220px] h-[1.5em] inline-block"
+                className="w-[100px] sm:w-[130px] md:w-[160px] lg:w-[195px] h-[1.5em] inline-block"
                 containerClassName="h-full w-full"
-                textClassName="text-sm sm:text-base md:text-lg lg:text-xl font-extrabold tracking-[0.3em] text-white uppercase"
+                textClassName="text-sm sm:text-base md:text-lg lg:text-xl font-extrabold tracking-[0.3em] text-white"
               />
             </div>
           </FadeIn>

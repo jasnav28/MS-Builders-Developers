@@ -38,8 +38,8 @@ export default function HoverFooterDemo() {
   const contactInfo = [
     {
       icon: <Mail size={18} className="text-[#3ca2fa]" />,
-      text: "msbuilderdevelopers@gmail.com",
-      href: "mailto:msbuilderdevelopers@gmail.com",
+      text: "support@msbuilderanddevelopers.com",
+      href: "mailto:support@msbuilderanddevelopers.com",
     },
     {
       icon: <Phone size={18} className="text-[#3ca2fa]" />,

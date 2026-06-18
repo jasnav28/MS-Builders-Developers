@@ -47,15 +47,15 @@ export default function FounderShowcase() {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 items-stretch">
           
           {/* COLUMN 1: Tall Card - Background Photo (Founder 1) */}
-          <div className="md:col-span-1 rounded-[28px] overflow-hidden border border-white/10 bg-white/[0.02] flex flex-col justify-between p-8 relative min-h-[500px] shadow-2xl group">
+          <div className="md:col-span-1 rounded-[28px] overflow-hidden border border-white/10 bg-white/[0.02] flex flex-col justify-between p-8 relative min-h-[600px] shadow-2xl group">
             {/* Background Image */}
             <div className="absolute inset-0 z-0 pointer-events-none">
               <img
                 src="/fo1.PNG"
                 alt="Founder Shashank Kumar Shekhar"
-                className="w-full h-full object-cover object-top transition-transform duration-700 group-hover:scale-105"
+                className="w-full h-full object-cover object-[center_18%] transition-transform duration-700 group-hover:scale-105"
               />
-              <div className="absolute inset-0 bg-gradient-to-b from-black/20 via-black/40 to-black/95" />
+              <div className="absolute inset-0 bg-gradient-to-b from-black/10 via-black/30 to-black/85" />
             </div>
             
             {/* Tag Label */}
@@ -121,7 +121,7 @@ export default function FounderShowcase() {
           </div>
 
           {/* COLUMN 3: Tall Card - Background Photo (Founder 2) */}
-          <div className="md:col-span-1 rounded-[28px] overflow-hidden border border-white/10 bg-white/[0.02] flex flex-col justify-between p-8 relative min-h-[500px] shadow-2xl group">
+          <div className="md:col-span-1 rounded-[28px] overflow-hidden border border-white/10 bg-white/[0.02] flex flex-col justify-between p-8 relative min-h-[600px] shadow-2xl group">
             {/* Background Image */}
             <div className="absolute inset-0 z-0 pointer-events-none">
               <img
@@ -129,7 +129,7 @@ export default function FounderShowcase() {
                 alt="Founder Madan Gowda"
                 className="w-full h-full object-cover object-center transition-transform duration-700 group-hover:scale-105"
               />
-              <div className="absolute inset-0 bg-gradient-to-b from-black/20 via-black/40 to-black/95" />
+              <div className="absolute inset-0 bg-gradient-to-b from-black/10 via-black/30 to-black/85" />
             </div>
             
             {/* Tag Label */}
