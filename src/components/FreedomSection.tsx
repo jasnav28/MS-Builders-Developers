@@ -52,6 +52,11 @@ export default function FreedomSection({ theme }: { theme: 'light' | 'dark' }) {
         <div className={`absolute inset-0 ${isDark ? 'bg-black/85' : 'bg-white/85'} transition-colors duration-300`} />
       </div>
 
+      {/* Top & Bottom Fade In/Out Overlays */}
+      <div className="absolute top-0 left-0 right-0 h-24 bg-gradient-to-b from-black to-transparent pointer-events-none z-[1]" />
+      <div className="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-black to-transparent pointer-events-none z-[1]" />
+
+
       {/* Block 1 — Header */}
       <div className="flex flex-col items-center gap-9 text-center relative z-10">
         <h2 

@@ -5,11 +5,18 @@ import { ArrowLeft, ArrowRight } from 'lucide-react';
 
 const SERVICES = [
   { 
-    name: 'Interior', 
-    src: '/ser/intt.png', 
-    bg: '#1A365D', 
-    bgImg: '/ser/int.png',
-    desc: 'Bespoke interior spaces, custom modular furniture designs, detailed space planning, and beautiful layouts.' 
+    name: '3D Render', 
+    src: '/ser/3dd.png', 
+    bg: '#744210', 
+    bgImg: '/ser/3d.png',
+    desc: 'Ultra-realistic 3D walkthrough rendering animations for interior & exterior visualization.' 
+  },
+  { 
+    name: '2D Design', 
+    src: '/ser/2dd.png', 
+    bg: '#22543D', 
+    bgImg: '/ser/2d.png',
+    desc: 'High-fidelity 2D layouts, detailed blueprints, column positions, and precise architectural plans.' 
   },
   { 
     name: 'Exterior', 
@@ -17,6 +24,13 @@ const SERVICES = [
     bg: '#2D3748', 
     bgImg: '/ser/ext.png',
     desc: 'Architectural elevation concepts, modern landscape structures, and premium facade fabrications.' 
+  },
+  { 
+    name: 'Interior', 
+    src: '/ser/intt.png', 
+    bg: '#1A365D', 
+    bgImg: '/ser/int.png',
+    desc: 'Bespoke interior spaces, custom modular furniture designs, detailed space planning, and beautiful layouts.' 
   },
   { 
     name: 'Real Estate', 
@@ -31,20 +45,6 @@ const SERVICES = [
     bg: '#2C5282', 
     bgImg: '/ser/reno.png',
     desc: 'Complete property structural remodeling, home extensions, restorations, and space renewals.' 
-  },
-  { 
-    name: '2D Design', 
-    src: '/ser/2dd.png', 
-    bg: '#22543D', 
-    bgImg: '/ser/2d.png',
-    desc: 'High-fidelity 2D layouts, detailed blueprints, column positions, and precise architectural plans.' 
-  },
-  { 
-    name: '3D Design', 
-    src: '/ser/3dd.png', 
-    bg: '#744210', 
-    bgImg: '/ser/3d.png',
-    desc: 'Ultra-realistic 3D walkthrough rendering animations for interior & exterior visualization.' 
   },
   { 
     name: 'Structural', 

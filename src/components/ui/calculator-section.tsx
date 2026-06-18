@@ -167,12 +167,13 @@ export function CalculatorSection() {
         {/* Header Block */}
         <div className="text-center mb-12 md:mb-20 space-y-3">
           <span className="text-[10px] md:text-xs font-mono uppercase tracking-[0.25em] text-[#FF5656] block">
-            Try project estimation calculator
+            “Try project estimation calculator
           </span>
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-normal tracking-tight text-foreground max-w-2xl mx-auto leading-tight">
-            Get premium construction within your budget
+            Get premium construction within your budget”
           </h2>
         </div>
+
 
         {/* 2-Column Grid */}
         <div className="grid grid-cols-1 lg:grid-cols-2 rounded-3xl overflow-hidden border border-black/10 dark:border-white/10 shadow-2xl">

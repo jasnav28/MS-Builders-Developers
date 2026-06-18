@@ -52,11 +52,12 @@ export const TextHoverEffect = ({
         >
           {hovered && (
             <>
-              <stop offset="0%" stopColor="#eab308" />
-              <stop offset="25%" stopColor="#ef4444" />
-              <stop offset="50%" stopColor="#80eeb4" />
-              <stop offset="75%" stopColor="#06b6d4" />
-              <stop offset="100%" stopColor="#8b5cf6" />
+              <stop offset="0%" stopColor="#AA771C" />
+              <stop offset="20%" stopColor="#F1C40F" />
+              <stop offset="40%" stopColor="#FFD700" />
+              <stop offset="60%" stopColor="#D4AF37" />
+              <stop offset="80%" stopColor="#F39C12" />
+              <stop offset="100%" stopColor="#AA771C" />
             </>
           )}
         </linearGradient>
@@ -99,8 +100,8 @@ export const TextHoverEffect = ({
         textAnchor="middle"
         dominantBaseline="middle"
         strokeWidth="0.3"
-        className="fill-transparent stroke-[#3ca2fa] font-[helvetica] text-7xl font-bold 
-        dark:stroke-[#3ca2fa99]"
+        className="fill-transparent stroke-[#D4AF37] font-[helvetica] text-7xl font-bold 
+        dark:stroke-[#D4AF37cc]"
         initial={{ strokeDashoffset: 1000, strokeDasharray: 1000 }}
         whileInView={{
           strokeDashoffset: 0,
@@ -127,7 +128,7 @@ export const TextHoverEffect = ({
         {text}
       </text>
 
-      {/* Subtitle: Builders & Developers */}
+      {/* Subtitle: Builder & Developers */}
       <text
         x="50%"
         y="78%"
@@ -137,7 +138,7 @@ export const TextHoverEffect = ({
         className="fill-transparent stroke-neutral-200 font-[helvetica] text-[13px] font-bold tracking-[0.3em] uppercase dark:stroke-neutral-800"
         style={{ opacity: hovered ? 0.7 : 0 }}
       >
-        Builders & Developers
+        Builder & Developers
       </text>
       <motion.text
         x="50%"
@@ -145,7 +146,7 @@ export const TextHoverEffect = ({
         textAnchor="middle"
         dominantBaseline="middle"
         strokeWidth="0.1"
-        className="fill-transparent stroke-[#3ca2fa] font-[helvetica] text-[13px] font-bold tracking-[0.3em] uppercase dark:stroke-[#3ca2fa99]"
+        className="fill-transparent stroke-[#D4AF37] font-[helvetica] text-[13px] font-bold tracking-[0.3em] uppercase dark:stroke-[#D4AF37cc]"
         initial={{ strokeDashoffset: 1000, strokeDasharray: 1000 }}
         whileInView={{
           strokeDashoffset: 0,
@@ -157,7 +158,7 @@ export const TextHoverEffect = ({
           ease: "easeInOut",
         }}
       >
-        Builders & Developers
+        Builder & Developers
       </motion.text>
       <text
         x="50%"
@@ -169,7 +170,7 @@ export const TextHoverEffect = ({
         mask="url(#textMask)"
         className="fill-transparent font-[helvetica] text-[13px] font-bold tracking-[0.3em] uppercase"
       >
-        Builders & Developers
+        Builder & Developers
       </text>
     </svg>
   );

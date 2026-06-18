@@ -109,9 +109,6 @@ function App() {
         <AnimatedFeatureSpotlightDemo />
       </section>
 
-      {/* NEW: Founder Showcase Section */}
-      <FounderShowcase />
-
       {/* 3rd: Services */}
       <section id="services" className="w-full h-screen relative border-b border-white/10">
         <ToonHubHero />
@@ -136,6 +133,10 @@ function App() {
       <section id="testimonials" className="w-full relative border-b border-white/10 bg-background">
         <TestimonialsDemo />
       </section>
+
+      {/* Founder Showcase Section (Relocated after Testimonials) */}
+      <FounderShowcase />
+
 
 
 

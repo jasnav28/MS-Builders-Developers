@@ -117,7 +117,7 @@ export default function HoverFooterDemo() {
               ✦ OUR HEADQUARTERS ✦
             </div>
             <h3 className="text-2xl md:text-3xl font-extrabold text-white leading-tight">
-              MS BUILDERS & DEVELOPERS
+              MS BUILDER & DEVELOPERS
             </h3>
             <p className="text-gray-400 text-sm md:text-base leading-relaxed font-light">
               2nd floor, Kumbeshwara Complex, Devanahalli, Karnataka - 562110
@@ -152,7 +152,7 @@ export default function HoverFooterDemo() {
               <span className="text-white text-3xl font-bold">MS</span>
             </div>
             <p className="text-sm leading-relaxed text-gray-400 font-light">
-              MS BUILDERS & DEVELOPERS is a premium real estate, construction, interior designing, and renovation firm.
+              MS BUILDER & DEVELOPERS is a premium real estate, construction, interior designing, and renovation firm.
             </p>
           </div>
 
