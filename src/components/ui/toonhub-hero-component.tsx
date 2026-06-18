@@ -114,7 +114,7 @@ export const ToonHubHero: React.FC = () => {
         fontFamily: "'Inter', sans-serif",
       }}
     >
-      <div className="relative w-full h-screen overflow-hidden">
+      <div className="relative w-full h-[75vh] overflow-hidden">
         {/* Top Fade-In Transition Overlay */}
         <div className="absolute top-0 left-0 right-0 h-32 bg-gradient-to-b from-black via-black/80 to-transparent pointer-events-none z-[60]" />
 
@@ -157,11 +157,6 @@ export const ToonHubHero: React.FC = () => {
               />
             </div>
           ))}
-        </div>
-
-        {/* 3. Top-left brand label "SERVICES" */}
-        <div className="absolute top-6 left-4 sm:left-8 z-[60] text-xs font-semibold uppercase text-white opacity-90 tracking-[0.18em]">
-          SERVICES
         </div>
 
         {/* 5. Bottom-left text + nav buttons */}

@@ -38,8 +38,8 @@ export default function HoverFooterDemo() {
   const contactInfo = [
     {
       icon: <Mail size={18} className="text-[#3ca2fa]" />,
-      text: "info@msbuilders.in",
-      href: "mailto:info@msbuilders.in",
+      text: "msbuilderdevelopers@gmail.com",
+      href: "mailto:msbuilderdevelopers@gmail.com",
     },
     {
       icon: <Phone size={18} className="text-[#3ca2fa]" />,
@@ -47,8 +47,14 @@ export default function HoverFooterDemo() {
       href: "tel:+919743399992",
     },
     {
+      icon: <Phone size={18} className="text-[#3ca2fa]" />,
+      text: "+91 63633 04103",
+      href: "tel:+916363304103",
+    },
+    {
       icon: <MapPin size={18} className="text-[#3ca2fa]" />,
-      text: "Karnataka, India",
+      text: "2nd floor, Kumbeshwara Complex, Devanahalli, Karnataka - 562110",
+      href: "https://www.google.com/maps/search/?api=1&query=2nd+floor,+Kumbeshwara+Complex,+Devanahalli,+Karnataka+-+562110"
     },
   ];
 
@@ -72,7 +78,7 @@ export default function HoverFooterDemo() {
         </svg>
       ), 
       label: "Instagram", 
-      href: "#" 
+      href: "https://www.instagram.com/ms__builders__developers?igsh=MTRpazB3N2FvY2xhMw%3D%3D&utm_source=qr" 
     },
     { 
       icon: (
@@ -102,22 +108,58 @@ export default function HoverFooterDemo() {
 
   return (
     <footer className="bg-[#0F0F11]/10 relative h-fit rounded-3xl overflow-hidden m-8 border border-white/5 bg-black">
-      <div className="max-w-7xl mx-auto p-14 z-40 relative">
+      <div className="max-w-7xl mx-auto p-10 md:p-14 z-40 relative">
+        
+        {/* Google Maps Section on Top */}
+        <div className="mb-12 flex flex-col lg:flex-row gap-8 items-stretch border-b border-white/10 pb-12">
+          <div className="flex-1 flex flex-col justify-center space-y-4">
+            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-[#3ca2fa]/20 bg-[#3ca2fa]/5 text-xs text-[#3ca2fa] w-fit font-mono tracking-wider">
+              ✦ OUR HEADQUARTERS ✦
+            </div>
+            <h3 className="text-2xl md:text-3xl font-extrabold text-white leading-tight">
+              MS BUILDERS & DEVELOPERS
+            </h3>
+            <p className="text-gray-400 text-sm md:text-base leading-relaxed font-light">
+              2nd floor, Kumbeshwara Complex, Devanahalli, Karnataka - 562110
+            </p>
+            <a
+              href="https://www.google.com/maps/search/?api=1&query=2nd+floor,+Kumbeshwara+Complex,+Devanahalli,+Karnataka+-+562110"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 text-xs md:text-sm text-[#3ca2fa] hover:text-white transition-colors duration-200 w-fit font-semibold tracking-wider uppercase"
+            >
+              <span>Open Location in Maps</span>
+              <svg xmlns="http://www.w3.org/2000/svg" className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+              </svg>
+            </a>
+          </div>
+          <div className="w-full lg:w-2/3 h-[250px] rounded-2xl overflow-hidden border border-white/10 shadow-2xl relative">
+            <iframe
+              title="MS Builders & Developers Location Map"
+              src="https://maps.google.com/maps?q=2nd%20floor,%20Kumbeshwara%20Complex,%20Devanahalli,%20Karnataka%20-%20562110&t=&z=15&ie=UTF8&iwloc=&output=embed"
+              className="w-full h-full border-0 grayscale opacity-80 hover:grayscale-0 hover:opacity-100 transition-all duration-500"
+              allowFullScreen
+              loading="lazy"
+            />
+          </div>
+        </div>
+
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 md:gap-8 lg:gap-16 pb-12">
           {/* Brand section */}
           <div className="flex flex-col space-y-4">
             <div className="flex items-center space-x-2">
               <span className="text-white text-3xl font-bold">MS</span>
             </div>
-            <p className="text-sm leading-relaxed text-gray-400">
-              MS Builders & Developers is a premium real estate and structural design firm.
+            <p className="text-sm leading-relaxed text-gray-400 font-light">
+              MS BUILDERS & DEVELOPERS is a premium real estate, construction, interior designing, and renovation firm.
             </p>
           </div>
 
           {/* Footer link sections */}
           {footerLinks.map((section) => (
             <div key={section.title}>
-              <h4 className="text-white text-lg font-semibold mb-6">
+              <h4 className="text-white text-base font-semibold mb-6 uppercase tracking-wider">
                 {section.title}
               </h4>
               <ul className="space-y-3">
@@ -127,7 +169,7 @@ export default function HoverFooterDemo() {
                       href={link.href}
                       target={link.href.startsWith("http") ? "_blank" : undefined}
                       rel={link.href.startsWith("http") ? "noopener noreferrer" : undefined}
-                      className="hover:text-[#3ca2fa] transition-colors text-gray-400"
+                      className="hover:text-[#3ca2fa] transition-colors text-gray-400 text-sm font-light"
                     >
                       {link.label}
                     </a>
@@ -142,22 +184,24 @@ export default function HoverFooterDemo() {
 
           {/* Contact section */}
           <div>
-            <h4 className="text-white text-lg font-semibold mb-6">
+            <h4 className="text-white text-base font-semibold mb-6 uppercase tracking-wider">
               Contact Us
             </h4>
             <ul className="space-y-4 text-gray-400">
               {contactInfo.map((item, i) => (
-                <li key={i} className="flex items-center space-x-3">
-                  {item.icon}
+                <li key={i} className="flex items-start space-x-3">
+                  <div className="mt-1 flex-shrink-0">{item.icon}</div>
                   {item.href ? (
                     <a
                       href={item.href}
-                      className="hover:text-[#3ca2fa] transition-colors"
+                      target={item.href.startsWith("http") ? "_blank" : undefined}
+                      rel={item.href.startsWith("http") ? "noopener noreferrer" : undefined}
+                      className="hover:text-[#3ca2fa] transition-colors text-sm font-light leading-relaxed"
                     >
                       {item.text}
                     </a>
                   ) : (
-                    <span className="hover:text-[#3ca2fa] transition-colors">
+                    <span className="hover:text-[#3ca2fa] transition-colors text-sm font-light leading-relaxed">
                       {item.text}
                     </span>
                   )}

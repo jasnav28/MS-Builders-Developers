@@ -226,7 +226,7 @@ export const WhyChooseUsShowcase: React.FC<{ theme: 'light' | 'dark' }> = ({ the
   const isDark = theme === 'dark';
 
   return (
-    <div className="relative w-full min-h-screen bg-background text-foreground py-24 px-6 md:px-12 lg:px-16 overflow-hidden flex flex-col justify-center transition-colors duration-300">
+    <div className="relative w-full min-h-[75vh] bg-background text-foreground py-16 px-6 md:px-12 lg:px-16 overflow-hidden flex flex-col justify-center transition-colors duration-300">
       {/* Lightfall Background Streaks */}
       <Lightfall
         colors={isDark ? ['#FF5656', '#5227FF', '#FF9FFC'] : ['#FF5656', '#4A90E2', '#B8E986']}
@@ -245,6 +245,9 @@ export const WhyChooseUsShowcase: React.FC<{ theme: 'light' | 'dark' }> = ({ the
         mouseStrength={1}
         mouseRadius={0.25}
       />
+
+      {/* Dark Overlay to reduce brightness */}
+      <div className="absolute inset-0 bg-black/40 pointer-events-none z-0" />
 
       {/* Background Soft Glows */}
       <div className="absolute top-1/4 left-1/4 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] rounded-full bg-[#5ed29c]/5 blur-[120px] pointer-events-none z-0" />
@@ -265,7 +268,7 @@ export const WhyChooseUsShowcase: React.FC<{ theme: 'light' | 'dark' }> = ({ the
           className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold tracking-tight text-foreground uppercase leading-none"
           style={{ fontFamily: "'Inter', sans-serif" }}
         >
-          Why Choose Us?<span className="text-[#5ed29c]">.</span>
+          Why Choose Us?
         </motion.h2>
       </div>
 
