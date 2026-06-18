@@ -52,15 +52,15 @@ export default function FounderShowcase() {
             <div className="absolute inset-0 z-0 pointer-events-none">
               <img
                 src="/fo1.PNG"
-                alt="Founder Shankar Gowda"
-                className="w-full h-full object-cover object-center transition-transform duration-700 group-hover:scale-105"
+                alt="Founder Shashank Kumar Shekhar"
+                className="w-full h-full object-cover object-top transition-transform duration-700 group-hover:scale-105"
               />
               <div className="absolute inset-0 bg-gradient-to-b from-black/20 via-black/40 to-black/95" />
             </div>
             
             {/* Tag Label */}
             <div className="relative z-10 text-[10px] font-mono tracking-widest text-[#FF5656] uppercase font-bold">
-              ✦ Shankar Gowda ✦
+              ✦ Shashank Kumar Shekhar ✦
             </div>
 
             {/* Experience list overlay at bottom */}
@@ -126,7 +126,7 @@ export default function FounderShowcase() {
             <div className="absolute inset-0 z-0 pointer-events-none">
               <img
                 src="/fo2.PNG"
-                alt="Founder Partner"
+                alt="Founder Madan Gowda"
                 className="w-full h-full object-cover object-center transition-transform duration-700 group-hover:scale-105"
               />
               <div className="absolute inset-0 bg-gradient-to-b from-black/20 via-black/40 to-black/95" />
@@ -134,7 +134,7 @@ export default function FounderShowcase() {
             
             {/* Tag Label */}
             <div className="relative z-10 text-[10px] font-mono tracking-widest text-[#FF5656] uppercase font-bold">
-              ✦ Founder & Partner ✦
+              ✦ Madan Gowda ✦
             </div>
 
             {/* Experience list overlay at bottom */}
