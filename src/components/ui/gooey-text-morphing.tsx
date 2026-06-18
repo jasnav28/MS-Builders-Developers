@@ -9,6 +9,7 @@ interface GooeyTextProps {
   cooldownTime?: number;
   className?: string;
   textClassName?: string;
+  containerClassName?: string;
 }
 
 export function GooeyText({
@@ -16,16 +17,25 @@ export function GooeyText({
   morphTime = 1,
   cooldownTime = 0.25,
   className,
-  textClassName
+  textClassName,
+  containerClassName
 }: GooeyTextProps) {
   const text1Ref = React.useRef<HTMLSpanElement>(null);
   const text2Ref = React.useRef<HTMLSpanElement>(null);
+  const uniqueId = React.useId().replace(/:/g, "-");
+  const filterId = `threshold-${uniqueId}`;
 
   React.useEffect(() => {
     let textIndex = texts.length - 1;
     let time = new Date();
     let morph = 0;
     let cooldown = cooldownTime;
+
+    // Initialize text content immediately to prevent empty flash
+    if (text1Ref.current && text2Ref.current) {
+      text1Ref.current.textContent = texts[texts.length - 1];
+      text2Ref.current.textContent = texts[0];
+    }
 
     const setMorph = (fraction: number) => {
       if (text1Ref.current && text2Ref.current) {
@@ -97,7 +107,7 @@ export function GooeyText({
     <div className={cn("relative", className)}>
       <svg className="absolute h-0 w-0" aria-hidden="true" focusable="false">
         <defs>
-          <filter id="threshold">
+          <filter id={filterId}>
             <feColorMatrix
               in="SourceGraphic"
               type="matrix"
@@ -111,8 +121,11 @@ export function GooeyText({
       </svg>
 
       <div
-        className="flex items-center justify-center relative h-[60px] md:h-[80px] w-full"
-        style={{ filter: "url(#threshold)" }}
+        className={cn(
+          "flex items-center justify-center relative w-full h-[60px] md:h-[80px]",
+          containerClassName
+        )}
+        style={{ filter: `url(#${filterId})` }}
       >
         <span
           ref={text1Ref}
