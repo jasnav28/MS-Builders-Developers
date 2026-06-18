@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { GooeyText } from './gooey-text-morphing';
+import { AnimatedText } from './animated-shiny-text';
 
 // --- FadeIn Component ---
 type FadeInProps = {
@@ -124,36 +124,15 @@ export const VexHero: React.FC<{ theme: 'light' | 'dark' }> = ({ theme }) => {
             className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-black tracking-tight text-white uppercase select-none leading-none drop-shadow-lg"
           />
 
-          {/* Tagline in one line, morphing, below the heading */}
+          {/* Tagline in one line, shiny text, below the heading */}
           <FadeIn delay={700} duration={1000}>
-            <div className="flex flex-row items-center justify-center text-white font-extrabold tracking-[0.15em] text-sm sm:text-base md:text-lg lg:text-xl drop-shadow-md select-none gap-x-1 sm:gap-x-2">
-              <GooeyText
-                texts={["Dream"]}
-                morphTime={1.2}
-                cooldownTime={1.5}
-                className="w-[50px] sm:w-[65px] md:w-[75px] lg:w-[90px] h-[1.5em] inline-block"
-                containerClassName="h-full w-full"
-                textClassName="text-sm sm:text-base md:text-lg lg:text-xl font-extrabold tracking-[0.15em] text-white"
-              />
-              <span className="text-white/60 select-none">.</span>
-              <GooeyText
-                texts={["Design"]}
-                morphTime={1.2}
-                cooldownTime={1.5}
-                className="w-[60px] sm:w-[75px] md:w-[90px] lg:w-[105px] h-[1.5em] inline-block"
-                containerClassName="h-full w-full"
-                textClassName="text-sm sm:text-base md:text-lg lg:text-xl font-extrabold tracking-[0.15em] text-white"
-              />
-              <span className="text-white/60 select-none">.</span>
-              <GooeyText
-                texts={["Deliver"]}
-                morphTime={1.2}
-                cooldownTime={1.5}
-                className="w-[70px] sm:w-[85px] md:w-[105px] lg:w-[120px] h-[1.5em] inline-block"
-                containerClassName="h-full w-full"
-                textClassName="text-sm sm:text-base md:text-lg lg:text-xl font-extrabold tracking-[0.15em] text-white"
-              />
-            </div>
+            <AnimatedText
+              text="DREAM . DESIGN . DELIVER"
+              gradientColors="linear-gradient(90deg, #ff5656, #ffffff, #ff5656)"
+              gradientAnimationDuration={2}
+              className="py-0"
+              textClassName="text-sm sm:text-base md:text-lg lg:text-xl font-extrabold tracking-[0.25em] text-white uppercase drop-shadow-md select-none"
+            />
           </FadeIn>
 
 
