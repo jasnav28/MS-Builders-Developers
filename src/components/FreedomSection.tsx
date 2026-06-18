@@ -60,15 +60,24 @@ export default function FreedomSection({ theme }: { theme: 'light' | 'dark' }) {
 
   return (
     <section 
-      className="w-full flex flex-col items-center transition-colors duration-300"
+      className="w-full flex flex-col items-center transition-colors duration-300 relative overflow-hidden"
       style={{
-        backgroundColor: isDark ? '#000000' : '#ffffff',
         padding: 'clamp(36px, 4.5vw, 64px) clamp(16px, 3vw, 40px)',
         gap: '36px',
       }}
     >
+      {/* Background Image & Tint Overlay */}
+      <div className="absolute inset-0 z-0 pointer-events-none">
+        <img
+          src="/p.png"
+          alt="Our Portfolio Background"
+          className="w-full h-full object-cover object-center"
+        />
+        <div className={`absolute inset-0 ${isDark ? 'bg-black/85' : 'bg-white/85'} transition-colors duration-300`} />
+      </div>
+
       {/* Block 1 — Header */}
-      <div className="flex flex-col items-center gap-9 text-center">
+      <div className="flex flex-col items-center gap-9 text-center relative z-10">
         <h2 
           className="font-medium tracking-tight"
           style={{
@@ -97,7 +106,7 @@ export default function FreedomSection({ theme }: { theme: 'light' | 'dark' }) {
 
       {/* Block 2 — Three-column grid */}
       <div 
-        className="w-full flex flex-col lg:grid"
+        className="w-full flex flex-col lg:grid relative z-10"
         style={{
           gridTemplateColumns: '26vw 1fr 26vw',
           columnGap: '36px',
