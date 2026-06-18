@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 
 const CHECK_ICON = 'https://cdn.prod.website-files.com/6720dd1ab6df0da205830ab1/686cc068490683bbb3377d04_bullet-list.svg';
 
@@ -21,12 +21,24 @@ const rightProjects = [
 
 function LocalVideo() {
   const videoRef = useRef<HTMLVideoElement>(null);
+  const [isInView, setIsInView] = useState(false);
 
   useEffect(() => {
     const video = videoRef.current;
-    if (video) {
-      video.play().catch(() => {});
-    }
+    if (!video) return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsInView(true);
+          observer.disconnect(); // Keep video loaded once visible
+        }
+      },
+      { rootMargin: '200px' } // Load slightly before scroll-into-view
+    );
+
+    observer.observe(video);
+    return () => observer.disconnect();
   }, []);
 
   return (
@@ -37,7 +49,8 @@ function LocalVideo() {
       muted
       playsInline
       className="w-full h-auto block"
-      src="/vid.mp4"
+      src={isInView ? "/vid.mp4" : undefined}
+      preload="none"
     />
   );
 }
@@ -121,15 +134,16 @@ export default function FreedomSection({ theme }: { theme: 'light' | 'dark' }) {
                 alt="" 
                 aria-hidden 
                 style={{ width: 'clamp(16px, 1.25vw, 20px)', flexShrink: 0 }} 
+                loading="lazy"
               />
               <div>{text}</div>
             </div>
           ))}
         </div>
 
-        {/* Center Column — Video */}
+        {/* Center Column — Video (Centered via mx-auto) */}
         <div 
-          className="flex items-center justify-center order-first lg:order-none w-full max-w-[340px] px-4"
+          className="flex items-center justify-center order-first lg:order-none w-full max-w-[340px] px-4 mx-auto"
           style={{ alignSelf: 'center' }}
         >
           <div className="relative w-full rounded-2xl overflow-hidden shadow-2xl border border-white/10">

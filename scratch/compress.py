@@ -19,7 +19,6 @@ def compress_images():
                 
                 try:
                     with Image.open(file_path) as img:
-                        # Convert to RGB if it's RGBA and we want to save space, but let's preserve mode for transparency
                         img_format = img.format
                         width, height = img.size
                         
@@ -38,10 +37,8 @@ def compress_images():
                         
                         # Save with optimization
                         if img_format == "PNG":
-                            # Use optimize=True and compress_level=9
                             img.save(file_path, format="PNG", optimize=True)
                         else:
-                            # Use quality=80 and optimize=True for JPEGs
                             img.save(file_path, format="JPEG", quality=80, optimize=True)
                         
                         new_size = os.path.getsize(file_path)

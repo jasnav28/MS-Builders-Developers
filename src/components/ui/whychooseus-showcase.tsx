@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { motion, useInView } from 'framer-motion';
 
 // --- Types for FeatureCard ---
@@ -28,7 +28,26 @@ export const FeatureCard: React.FC<FeatureCardProps> = ({
 }) => {
   const [coords, setCoords] = useState({ x: 0, y: 0 });
   const [isHovered, setIsHovered] = useState(false);
+  const [isInView, setIsInView] = useState(false);
   const cardRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const card = cardRef.current;
+    if (!card) return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsInView(true);
+          observer.disconnect(); // Keep loaded once visible
+        }
+      },
+      { rootMargin: '300px' } // Pre-load slightly early
+    );
+
+    observer.observe(card);
+    return () => observer.disconnect();
+  }, []);
 
   const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
     const rect = e.currentTarget.getBoundingClientRect();
@@ -62,18 +81,21 @@ export const FeatureCard: React.FC<FeatureCardProps> = ({
     >
       {/* Background Video */}
       <div className="absolute inset-0 z-0 pointer-events-none overflow-hidden rounded-[28px]">
-        <motion.video
-          src={video}
-          autoPlay
-          muted
-          loop
-          playsInline
-          className="w-full h-full object-cover origin-center rounded-[28px]"
-          animate={{
-            scale: isHovered ? 1.08 : 1.02,
-          }}
-          transition={{ duration: 0.8, ease: [0.25, 1, 0.5, 1] }}
-        />
+        {isInView ? (
+          <motion.video
+            src={video}
+            autoPlay
+            muted
+            loop
+            playsInline
+            className="w-full h-full object-cover origin-center rounded-[28px]"
+            animate={{
+              scale: isHovered ? 1.08 : 1.02,
+            }}
+            transition={{ duration: 0.8, ease: [0.25, 1, 0.5, 1] }}
+            preload="none"
+          />
+        ) : null}
         {/* Darkened Overlay */}
         <div className="absolute inset-0 bg-gradient-to-b from-black/20 via-black/40 to-black/80 z-[1] transition-opacity duration-300" />
         {/* Hover Radial Gradient Highlight */}
