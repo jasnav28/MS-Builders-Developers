@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useRef, useState } from 'react';
+import Masonry from './ui/Masonry';
 
 const CHECK_ICON = 'https://cdn.prod.website-files.com/6720dd1ab6df0da205830ab1/686cc068490683bbb3377d04_bullet-list.svg';
 
@@ -19,43 +19,18 @@ const rightProjects = [
   '9. Muddenahalli 600 bedHospital 5th wing construction.',
 ];
 
-function LocalVideo() {
-  const videoRef = useRef<HTMLVideoElement>(null);
-  const [isInView, setIsInView] = useState(false);
-
-  useEffect(() => {
-    const video = videoRef.current;
-    if (!video) return;
-
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setIsInView(true);
-          observer.disconnect(); // Keep video loaded once visible
-        }
-      },
-      { rootMargin: '200px' } // Load slightly before scroll-into-view
-    );
-
-    observer.observe(video);
-    return () => observer.disconnect();
-  }, []);
-
-  return (
-    <video
-      ref={videoRef}
-      autoPlay
-      loop
-      muted
-      playsInline
-      className="w-full h-auto block"
-      src={isInView ? "/vid.mp4" : undefined}
-      preload="none"
-    />
-  );
-}
+const masonryItems = [
+  { id: '1', img: '/pot/1.png', url: 'https://wa.me/919743399992', height: 380 },
+  { id: '2', img: '/pot/2.png', url: 'https://wa.me/919743399992', height: 420 },
+  { id: '3', img: '/pot/3.png', url: 'https://wa.me/919743399992', height: 280 },
+  { id: '4', img: '/pot/4.png', url: 'https://wa.me/919743399992', height: 350 },
+  { id: '5', img: '/pot/5.png', url: 'https://wa.me/919743399992', height: 400 },
+  { id: '6', img: '/pot/6.png', url: 'https://wa.me/919743399992', height: 300 },
+  { id: '7', img: '/pot/7.png', url: 'https://wa.me/919743399992', height: 360 },
+];
 
 export default function FreedomSection({ theme }: { theme: 'light' | 'dark' }) {
+
   const isDark = theme === 'dark';
 
   return (
@@ -150,15 +125,24 @@ export default function FreedomSection({ theme }: { theme: 'light' | 'dark' }) {
           ))}
         </div>
 
-        {/* Center Column — Video (Centered via mx-auto) */}
+        {/* Center Column — Masonry Gallery */}
         <div 
-          className="flex items-center justify-center order-first lg:order-none w-full max-w-[340px] px-4 mx-auto"
-          style={{ alignSelf: 'center' }}
+          className="order-first lg:order-none w-full max-w-[340px] px-2 mx-auto"
+          style={{ alignSelf: 'stretch' }}
         >
-          <div className="relative w-full rounded-2xl overflow-hidden shadow-2xl border border-white/10">
-            <LocalVideo />
-            {/* Little black filter to soften brightness */}
-            <div className="absolute inset-0 bg-black/35 pointer-events-none" />
+          <div className="w-full relative">
+            <Masonry 
+              items={masonryItems} 
+              columns={2} 
+              ease="power3.out"
+              duration={0.6}
+              stagger={0.05}
+              animateFrom="bottom"
+              scaleOnHover={true}
+              hoverScale={0.96}
+              blurToFocus={true}
+              colorShiftOnHover={false}
+            />
           </div>
         </div>
 
