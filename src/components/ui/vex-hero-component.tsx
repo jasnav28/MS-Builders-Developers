@@ -126,32 +126,32 @@ export const VexHero: React.FC<{ theme: 'light' | 'dark' }> = ({ theme }) => {
 
           {/* Tagline in one line, morphing, below the heading */}
           <FadeIn delay={700} duration={1000}>
-            <div className="flex flex-row items-center justify-center text-white font-extrabold tracking-[0.3em] text-sm sm:text-base md:text-lg lg:text-xl drop-shadow-md select-none gap-x-1 sm:gap-x-3 md:gap-x-4">
+            <div className="flex flex-row items-center justify-center text-white font-extrabold tracking-[0.15em] text-sm sm:text-base md:text-lg lg:text-xl drop-shadow-md select-none gap-x-1 sm:gap-x-2">
               <GooeyText
                 texts={["Dream"]}
                 morphTime={1.2}
                 cooldownTime={1.5}
-                className="w-[75px] sm:w-[95px] md:w-[120px] lg:w-[145px] h-[1.5em] inline-block"
+                className="w-[50px] sm:w-[65px] md:w-[75px] lg:w-[90px] h-[1.5em] inline-block"
                 containerClassName="h-full w-full"
-                textClassName="text-sm sm:text-base md:text-lg lg:text-xl font-extrabold tracking-[0.3em] text-white"
+                textClassName="text-sm sm:text-base md:text-lg lg:text-xl font-extrabold tracking-[0.15em] text-white"
               />
-              <span className="text-white select-none mx-1 sm:mx-2 md:mx-3">.</span>
+              <span className="text-white/60 select-none">.</span>
               <GooeyText
                 texts={["Design"]}
                 morphTime={1.2}
                 cooldownTime={1.5}
-                className="w-[90px] sm:w-[115px] md:w-[140px] lg:w-[170px] h-[1.5em] inline-block"
+                className="w-[60px] sm:w-[75px] md:w-[90px] lg:w-[105px] h-[1.5em] inline-block"
                 containerClassName="h-full w-full"
-                textClassName="text-sm sm:text-base md:text-lg lg:text-xl font-extrabold tracking-[0.3em] text-white"
+                textClassName="text-sm sm:text-base md:text-lg lg:text-xl font-extrabold tracking-[0.15em] text-white"
               />
-              <span className="text-white select-none mx-1 sm:mx-2 md:mx-3">.</span>
+              <span className="text-white/60 select-none">.</span>
               <GooeyText
                 texts={["Deliver"]}
                 morphTime={1.2}
                 cooldownTime={1.5}
-                className="w-[100px] sm:w-[130px] md:w-[160px] lg:w-[195px] h-[1.5em] inline-block"
+                className="w-[70px] sm:w-[85px] md:w-[105px] lg:w-[120px] h-[1.5em] inline-block"
                 containerClassName="h-full w-full"
-                textClassName="text-sm sm:text-base md:text-lg lg:text-xl font-extrabold tracking-[0.3em] text-white"
+                textClassName="text-sm sm:text-base md:text-lg lg:text-xl font-extrabold tracking-[0.15em] text-white"
               />
             </div>
           </FadeIn>
