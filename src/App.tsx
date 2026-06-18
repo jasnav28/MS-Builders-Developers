@@ -9,7 +9,6 @@ import { ToonHubHero } from './components/ui/toonhub-hero-component'
 import { VexHero } from './components/ui/vex-hero-component'
 import Switch from './components/ui/sky-toggle'
 import FounderShowcase from './components/ui/founder-showcase'
-import ShinyText from './components/ui/ShinyText'
 
 function App() {
   const [theme, setTheme] = useState<'light' | 'dark'>(() => {
@@ -82,17 +81,7 @@ function App() {
       <FounderShowcase />
 
       {/* 3rd: Services */}
-      <section id="services" className="w-full relative border-b border-white/10 bg-black">
-        {/* Shiny Text Header Section on Top */}
-        <div className="w-full py-8 flex justify-center items-center border-b border-white/5 bg-[#080808]">
-          <ShinyText
-            text="SERVICES"
-            speed={3.5}
-            color="#a3a3a3"
-            shineColor="#ffffff"
-            className="text-2xl md:text-3xl font-black tracking-[0.3em] font-mono"
-          />
-        </div>
+      <section id="services" className="w-full h-screen relative border-b border-white/10">
         <ToonHubHero />
       </section>
 
