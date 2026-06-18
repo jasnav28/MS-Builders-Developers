@@ -385,14 +385,27 @@ export function CalculatorSection() {
             </div>
           </div>
 
-          {/* RIGHT COLUMN: Package Details */}
-          <div className="bg-white dark:bg-[#121212] p-8 lg:p-12 border-t lg:border-t-0 lg:border-l border-black/10 dark:border-white/10 flex flex-col justify-between min-h-[717.98px] transition-colors duration-300">
-            <div className="space-y-8">
-              <div className="space-y-2 pb-4 border-b border-black/10 dark:border-white/10">
-                <h3 className="text-xl md:text-2xl font-semibold text-foreground dark:text-white">
+          {/* RIGHT COLUMN: Package Details (Dynamic Background Image) */}
+          <div 
+            className="relative p-8 lg:p-12 border-t lg:border-t-0 lg:border-l border-black/10 dark:border-white/10 flex flex-col justify-between min-h-[717.98px] bg-cover bg-center overflow-hidden transition-all duration-500"
+            style={{ 
+              backgroundImage: `url(${
+                packageType === 'silver' ? '/ba.png' :
+                packageType === 'gold' ? '/lilba.png' :
+                packageType === 'commercial' ? '/ca.png' :
+                '/lux.png'
+              })`
+            }}
+          >
+            {/* Little black shade overlay so details are visible */}
+            <div className="absolute inset-0 bg-black/70 pointer-events-none z-0" />
+            
+            <div className="relative z-10 space-y-8">
+              <div className="space-y-2 pb-4 border-b border-white/20">
+                <h3 className="text-xl md:text-2xl font-semibold text-white">
                   Package Details
                 </h3>
-                <p className="text-xs md:text-sm text-gray-500 dark:text-gray-400 leading-relaxed capitalize">
+                <p className="text-xs md:text-sm text-gray-300 leading-relaxed capitalize">
                   Specifications included in the {packageType} package:
                 </p>
               </div>
@@ -405,7 +418,7 @@ export function CalculatorSection() {
                   <h4 className="text-sm font-bold uppercase tracking-wider text-[#FF5656]">
                     Design & Drawings
                   </h4>
-                  <ul className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs md:text-sm text-gray-600 dark:text-gray-300">
+                  <ul className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs md:text-sm text-gray-200">
                     {activePackageDetails.design.map((detail, index) => (
                       <li key={index} className="flex items-start gap-2.5">
                         <svg className="w-4 h-4 text-[#FF5656] mt-0.5 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={3}>
@@ -422,7 +435,7 @@ export function CalculatorSection() {
                   <h4 className="text-sm font-bold uppercase tracking-wider text-[#FF5656]">
                     Construction Materials
                   </h4>
-                  <ul className="space-y-2.5 text-xs md:text-sm text-gray-600 dark:text-gray-300">
+                  <ul className="space-y-2.5 text-xs md:text-sm text-gray-200">
                     {activePackageDetails.materials.map((detail, index) => (
                       <li key={index} className="flex items-start gap-2.5">
                         <svg className="w-4 h-4 text-[#FF5656] mt-0.5 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={3}>
@@ -438,7 +451,7 @@ export function CalculatorSection() {
             </div>
 
             {/* Note info */}
-            <div className="text-[10px] md:text-xs text-gray-400 dark:text-gray-500 border-t border-black/10 dark:border-white/10 pt-4 mt-6">
+            <div className="relative z-10 text-[10px] md:text-xs text-gray-400 border-t border-white/10 pt-4 mt-6">
               * The materials specified above represent standard execution. Equivalent brands may be substituted depending on material availability and client requirements.
             </div>
 

@@ -8,6 +8,7 @@ import TestimonialsDemo from './components/testimonials-demo'
 import { ToonHubHero } from './components/ui/toonhub-hero-component'
 import { VexHero } from './components/ui/vex-hero-component'
 import Switch from './components/ui/sky-toggle'
+import FounderShowcase from './components/ui/founder-showcase'
 
 function App() {
   const [theme, setTheme] = useState<'light' | 'dark'>(() => {
@@ -46,10 +47,7 @@ function App() {
               { label: 'Home', href: '#vex' },
               { label: 'About Us', href: '#aboutus' },
               { label: 'Services', href: '#services' },
-              { label: 'Our Portfolio', href: '#portfolio' },
-              { label: 'Why Choose Us', href: '#whychooseus' },
               { label: 'Packages', href: '#packages' },
-              { label: 'Testimonials', href: '#testimonials' },
               { label: 'Contact Us', href: '#footer' }
             ].map((item) => (
               <a
@@ -79,6 +77,9 @@ function App() {
         <AnimatedFeatureSpotlightDemo />
       </section>
 
+      {/* NEW: Founder Showcase Section */}
+      <FounderShowcase />
+
       {/* 3rd: Services */}
       <section id="services" className="w-full h-screen relative border-b border-white/10">
         <ToonHubHero />
@@ -91,7 +92,7 @@ function App() {
 
       {/* 5th: Why Choose Us? */}
       <section id="whychooseus" className="w-full relative border-b border-white/10">
-        <InteractiveSelectorDemo />
+        <InteractiveSelectorDemo theme={theme} />
       </section>
 
       {/* 6th: Packages */}

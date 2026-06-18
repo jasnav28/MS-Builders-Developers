@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { cn } from '@/lib/utils';
-import { Button, type ButtonProps } from '@/components/ui/button';
+import StarBorder from './StarBorder';
 
 // Interface for component props remains the same for easy integration.
 interface AnimatedFeatureSpotlightProps extends React.HTMLAttributes<HTMLElement> {
@@ -9,7 +9,7 @@ interface AnimatedFeatureSpotlightProps extends React.HTMLAttributes<HTMLElement
   heading: React.ReactNode;
   description: string | React.ReactNode;
   buttonText: string;
-  buttonProps?: ButtonProps;
+  buttonProps?: any;
   imageUrl: string;
   imageAlt?: string;
 }
@@ -65,9 +65,9 @@ const AnimatedFeatureSpotlight = React.forwardRef<HTMLElement, AnimatedFeatureSp
                 : description}
             </div>
             <div className="animate-in fade-in slide-in-from-top-4 duration-700 delay-400 pt-2">
-              <Button size="lg" className="bg-[#FF5656] hover:bg-[#FF5656]/90 text-white font-medium px-8 rounded-full" {...buttonProps}>
+              <StarBorder color="#FF5656" speed="5s" thickness={2} className="cursor-pointer" {...buttonProps}>
                 {buttonText}
-              </Button>
+              </StarBorder>
             </div>
           </div>
 

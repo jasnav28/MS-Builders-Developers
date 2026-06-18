@@ -115,6 +115,9 @@ export const ToonHubHero: React.FC = () => {
       }}
     >
       <div className="relative w-full h-screen overflow-hidden">
+        {/* Top Fade-In Transition Overlay */}
+        <div className="absolute top-0 left-0 right-0 h-32 bg-gradient-to-b from-black via-black/80 to-transparent pointer-events-none z-[60]" />
+
         {/* 1. Grain overlay */}
         <div
           className="absolute inset-0 pointer-events-none z-[50] opacity-40"

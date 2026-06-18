@@ -2,6 +2,7 @@
 
 import React, { useState, useRef, useEffect } from 'react';
 import { motion, useInView } from 'framer-motion';
+import Lightfall from './Lightfall';
 
 // --- Types for FeatureCard ---
 type FeatureCardProps = {
@@ -182,7 +183,7 @@ export const FeatureCard: React.FC<FeatureCardProps> = ({
 };
 
 // --- Main WhyChooseUsShowcase Component ---
-export const WhyChooseUsShowcase: React.FC = () => {
+export const WhyChooseUsShowcase: React.FC<{ theme: 'light' | 'dark' }> = ({ theme }) => {
   const headingRef = useRef(null);
   const isHeadingInView = useInView(headingRef, { once: true, margin: '-100px' });
 
@@ -222,8 +223,29 @@ export const WhyChooseUsShowcase: React.FC = () => {
     }
   ];
 
+  const isDark = theme === 'dark';
+
   return (
     <div className="relative w-full min-h-screen bg-background text-foreground py-24 px-6 md:px-12 lg:px-16 overflow-hidden flex flex-col justify-center transition-colors duration-300">
+      {/* Lightfall Background Streaks */}
+      <Lightfall
+        colors={isDark ? ['#FF5656', '#5227FF', '#FF9FFC'] : ['#FF5656', '#4A90E2', '#B8E986']}
+        backgroundColor={isDark ? '#000000' : '#ffffff'}
+        speed={0.6}
+        streakCount={6}
+        streakWidth={1}
+        streakLength={1.2}
+        glow={1.2}
+        density={0.7}
+        twinkle={0.8}
+        zoom={2.5}
+        backgroundGlow={isDark ? 0.15 : 0.05}
+        opacity={isDark ? 0.75 : 0.45}
+        mouseInteraction={true}
+        mouseStrength={1}
+        mouseRadius={0.25}
+      />
+
       {/* Background Soft Glows */}
       <div className="absolute top-1/4 left-1/4 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] rounded-full bg-[#5ed29c]/5 blur-[120px] pointer-events-none z-0" />
       <div className="absolute bottom-1/4 right-1/4 translate-x-1/2 translate-y-1/2 w-[500px] h-[500px] rounded-full bg-blue-500/5 blur-[120px] pointer-events-none z-0" />
