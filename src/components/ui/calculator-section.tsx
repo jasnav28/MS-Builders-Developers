@@ -13,6 +13,7 @@ export function CalculatorSection() {
   // State variables tailored for construction square footage estimation
   const [packageType, setPackageType] = useState<PackageType>('platinum');
   const [sqft, setSqft] = useState<number>(0); // Default set to 0 as requested
+  const [needStandardInterior, setNeedStandardInterior] = useState<boolean>(false);
   const [needInterior, setNeedInterior] = useState<boolean>(false);
   const [needAutomation, setNeedAutomation] = useState<boolean>(false);
   
@@ -39,13 +40,14 @@ export function CalculatorSection() {
     } else if (packageType === 'gold') {
       rate = 2150;
     } else if (packageType === 'commercial') {
-      rate = 1350;
+      rate = 1450;
     }
 
     // MS Builders & Developers Price
     let total = sqft * rate;
-    if (needInterior) total += sqft * 250;
-    if (needAutomation) total += sqft * 150;
+    if (needStandardInterior) total += sqft * 550;
+    if (needInterior) total += sqft * 950;
+    if (needAutomation) total += sqft * 1150;
 
     // Premium Commercial Firm pricing (Typical 25% markup + higher overheads)
     const premiumFirmRate = rate * 1.25;
@@ -61,7 +63,7 @@ export function CalculatorSection() {
       localContractor: localContractorTotal,
       currentRate: rate,
     };
-  }, [packageType, sqft, needInterior, needAutomation]);
+  }, [packageType, sqft, needStandardInterior, needInterior, needAutomation]);
 
   const handleBookSession = () => {
     const packageName = 
@@ -70,7 +72,7 @@ export function CalculatorSection() {
       packageType === 'platinum' ? 'Platinum Package' : 
       'Commercial Building Package';
 
-    const details = `Package: ${packageName}, Area: ${sqft} Sqft, Premium Interiors: ${needInterior ? 'Yes' : 'No'}, Home Automation: ${needAutomation ? 'Yes' : 'No'}. Estimated Cost: Rs ${prices.msBuilders.toLocaleString('en-IN')}`;
+    const details = `Package: ${packageName}, Area: ${sqft} Sqft, Standard Interiors: ${needStandardInterior ? 'Yes' : 'No'}, Premium Interiors: ${needInterior ? 'Yes' : 'No'}, Home Automation: ${needAutomation ? 'Yes' : 'No'}. Estimated Cost: Rs ${prices.msBuilders.toLocaleString('en-IN')}`;
     
     // Copy estimate to clipboard
     navigator.clipboard.writeText(details).catch(() => {});
@@ -193,7 +195,7 @@ export function CalculatorSection() {
                       { label: 'SILVER PACKAGE', value: 'silver', rate: 'Rs 1,850 / Sqft' },
                       { label: 'GOLD PACKAGE', value: 'gold', rate: 'Rs 2,150 / Sqft' },
                       { label: 'PLATINUM PACKAGE', value: 'platinum', rate: 'Rs 2,550 / Sqft' },
-                      { label: 'Commercial Building', value: 'commercial', rate: 'Starts @ Rs 1,350 / Sqft' },
+                      { label: 'Commercial Building', value: 'commercial', rate: 'Starts @ Rs 1,450 / Sqft' },
                     ] as const
                   ).map((option) => {
                     const active = packageType === option.value;
@@ -263,7 +265,50 @@ export function CalculatorSection() {
                   Premium Add-ons
                 </h3>
                 <div className="space-y-3">
-                  {/* Addon 1 */}
+                  {/* Addon 1: Standard Interior Design & Finishes */}
+                  <label
+                    className={`flex items-center justify-between p-4 rounded-xl border cursor-pointer transition-all ${
+                      needStandardInterior
+                        ? 'border-[#FF5656] bg-[#FF5656]/5 text-foreground dark:text-white'
+                        : 'border-black/10 dark:border-white/10 bg-transparent hover:border-black/20 dark:hover:border-white/20 text-gray-500 dark:text-gray-400'
+                    }`}
+                  >
+                    <div className="flex items-center gap-3">
+                      <input
+                        type="checkbox"
+                        checked={needStandardInterior}
+                        onChange={(e) => {
+                          setNeedStandardInterior(e.target.checked);
+                          if (e.target.checked) {
+                            setNeedInterior(false);
+                          }
+                        }}
+                        className="sr-only"
+                      />
+                      {/* Custom Checkbox */}
+                      <div
+                        className={`w-5 h-5 border-2 rounded flex items-center justify-center transition-colors ${
+                          needStandardInterior ? 'border-[#FF5656] bg-[#FF5656]' : 'border-black/30 dark:border-white/30'
+                        }`}
+                      >
+                        {needStandardInterior && (
+                          <svg
+                            className="w-3.5 h-3.5 text-white"
+                            fill="none"
+                            viewBox="0 0 24 24"
+                            stroke="currentColor"
+                            strokeWidth={3}
+                          >
+                            <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
+                          </svg>
+                        )}
+                      </div>
+                      <span className="text-xs md:text-sm font-medium">Include Standard Interior Design & Finishes</span>
+                    </div>
+                    <span className="text-xs md:text-sm font-bold text-[#FF5656] font-mono">+Rs 550/Sqft</span>
+                  </label>
+
+                  {/* Addon 2: Premium Interior Design & Finishes */}
                   <label
                     className={`flex items-center justify-between p-4 rounded-xl border cursor-pointer transition-all ${
                       needInterior
@@ -275,7 +320,12 @@ export function CalculatorSection() {
                       <input
                         type="checkbox"
                         checked={needInterior}
-                        onChange={(e) => setNeedInterior(e.target.checked)}
+                        onChange={(e) => {
+                          setNeedInterior(e.target.checked);
+                          if (e.target.checked) {
+                            setNeedStandardInterior(false);
+                          }
+                        }}
                         className="sr-only"
                       />
                       {/* Custom Checkbox */}
@@ -298,10 +348,10 @@ export function CalculatorSection() {
                       </div>
                       <span className="text-xs md:text-sm font-medium">Include Premium Interior Design & Finishes</span>
                     </div>
-                    <span className="text-xs md:text-sm font-bold text-[#FF5656] font-mono">+Rs 250/Sqft</span>
+                    <span className="text-xs md:text-sm font-bold text-[#FF5656] font-mono">+Rs 950/Sqft</span>
                   </label>
 
-                  {/* Addon 2 */}
+                  {/* Addon 3: Smart Home Automation & Security */}
                   <label
                     className={`flex items-center justify-between p-4 rounded-xl border cursor-pointer transition-all ${
                       needAutomation
@@ -336,7 +386,7 @@ export function CalculatorSection() {
                       </div>
                       <span className="text-xs md:text-sm font-medium">Include Smart Home Automation & Security</span>
                     </div>
-                    <span className="text-xs md:text-sm font-bold text-[#FF5656] font-mono">+Rs 150/Sqft</span>
+                    <span className="text-xs md:text-sm font-bold text-[#FF5656] font-mono">+Rs 1,150/Sqft</span>
                   </label>
                 </div>
               </div>
