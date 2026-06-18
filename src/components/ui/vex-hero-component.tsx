@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { GooeyText } from './gooey-text-morphing';
 
 // --- FadeIn Component ---
 type FadeInProps = {
@@ -123,11 +124,14 @@ export const VexHero: React.FC<{ theme: 'light' | 'dark' }> = ({ theme }) => {
             className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-black tracking-tight text-white uppercase select-none leading-none drop-shadow-lg"
           />
 
-          {/* Tagline in one line, static, below the heading */}
-          <FadeIn delay={700} duration={1000}>
-            <p className="text-white font-extrabold uppercase tracking-[0.3em] text-sm sm:text-base md:text-lg lg:text-xl drop-shadow-md select-none">
-              Dream <span className="text-[#FF5656]">✦</span> Design <span className="text-[#FF5656]">✦</span> Deliver
-            </p>
+          {/* Tagline using GooeyText Morphing effect */}
+          <FadeIn delay={700} duration={1000} className="w-full max-w-[280px] sm:max-w-[380px] md:max-w-[480px]">
+            <GooeyText
+              texts={["DREAM", "DESIGN", "DELIVER"]}
+              morphTime={1.2}
+              cooldownTime={0.4}
+              textClassName="text-white font-extrabold uppercase tracking-[0.25em] text-xl sm:text-2xl md:text-3xl lg:text-4xl drop-shadow-md select-none"
+            />
           </FadeIn>
 
           {/* Centered Buttons Row */}
