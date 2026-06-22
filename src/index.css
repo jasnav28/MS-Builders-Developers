@@ -116,6 +116,11 @@
   overflow: hidden;
 }
 
+.dark .liquid-glass {
+  background: rgba(255, 255, 255, 0.08);
+  box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.15), 0 4px 30px rgba(0, 0, 0, 0.2);
+}
+
 .liquid-glass::before {
   content: '';
   position: absolute;

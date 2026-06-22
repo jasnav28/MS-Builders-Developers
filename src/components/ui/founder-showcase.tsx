@@ -4,18 +4,6 @@ import { ArrowUpRight } from 'lucide-react';
 export default function FounderShowcase() {
   const containerRef = useRef(null);
 
-  const experience1 = [
-    { years: '2016-Now', role: 'Founder & MD', company: 'MS Builders' },
-    { years: '2011-2016', role: 'Lead Design Engineer', company: 'Gowda Associates' },
-    { years: '2007-2011', role: 'Project Civil Engineer', company: 'Structural Cons.' },
-  ];
-
-  const experience2 = [
-    { years: '2016-Now', role: 'Founder & Partner', company: 'MS Builders' },
-    { years: '2012-2016', role: 'Senior Architect', company: 'Build Design Studio' },
-    { years: '2008-2012', role: 'Structural Engineer', company: 'Urban Infra' },
-  ];
-
   return (
     <div id="founder" className="w-full bg-[#030303] text-white py-20 md:py-28 px-6 md:px-12 lg:px-16 transition-colors duration-300">
       <div className="max-w-7xl mx-auto" ref={containerRef}>
@@ -47,7 +35,7 @@ export default function FounderShowcase() {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 items-stretch">
           
           {/* COLUMN 1: Tall Card - Background Photo (Founder 1) */}
-          <div className="md:col-span-1 rounded-[28px] overflow-hidden border border-white/10 bg-white/[0.02] flex flex-col justify-between p-8 relative min-h-[600px] shadow-2xl group">
+          <div className="md:col-span-1 rounded-[28px] overflow-hidden border border-white/10 bg-white/[0.02] flex flex-col justify-end p-8 relative min-h-[600px] shadow-2xl group text-center">
             {/* Background Image */}
             <div className="absolute inset-0 z-0 pointer-events-none">
               <img
@@ -58,24 +46,9 @@ export default function FounderShowcase() {
               <div className="absolute inset-0 bg-gradient-to-b from-black/10 via-black/30 to-black/85" />
             </div>
             
-            {/* Tag Label */}
-            <div className="relative z-10 text-[10px] font-mono tracking-widest text-[#FF5656] uppercase font-bold">
-              ✦ Shashank Kumar Shekhar ✦
-            </div>
-
-            {/* Experience list overlay at bottom */}
-            <div className="relative z-10 space-y-4 pt-32">
-              <div className="divide-y divide-white/10">
-                {experience1.map((item, idx) => (
-                  <div key={idx} className="flex justify-between py-3 text-xs font-light">
-                    <span className="text-gray-400 font-mono">{item.years}</span>
-                    <div className="text-right">
-                      <span className="block font-medium text-white">{item.role}</span>
-                      <span className="block text-[10px] text-gray-500">{item.company}</span>
-                    </div>
-                  </div>
-                ))}
-              </div>
+            {/* Name centered at bottom */}
+            <div className="relative z-10 text-xl md:text-2xl font-bold tracking-wide text-white">
+              Shashank Kumar Shekhar
             </div>
           </div>
 
@@ -121,7 +94,7 @@ export default function FounderShowcase() {
           </div>
 
           {/* COLUMN 3: Tall Card - Background Photo (Founder 2) */}
-          <div className="md:col-span-1 rounded-[28px] overflow-hidden border border-white/10 bg-white/[0.02] flex flex-col justify-between p-8 relative min-h-[600px] shadow-2xl group">
+          <div className="md:col-span-1 rounded-[28px] overflow-hidden border border-white/10 bg-white/[0.02] flex flex-col justify-end p-8 relative min-h-[600px] shadow-2xl group text-center">
             {/* Background Image */}
             <div className="absolute inset-0 z-0 pointer-events-none">
               <img
@@ -132,24 +105,9 @@ export default function FounderShowcase() {
               <div className="absolute inset-0 bg-gradient-to-b from-black/10 via-black/30 to-black/85" />
             </div>
             
-            {/* Tag Label */}
-            <div className="relative z-10 text-[10px] font-mono tracking-widest text-[#FF5656] uppercase font-bold">
-              ✦ Madan Gowda ✦
-            </div>
-
-            {/* Experience list overlay at bottom */}
-            <div className="relative z-10 space-y-4 pt-32">
-              <div className="divide-y divide-white/10">
-                {experience2.map((item, idx) => (
-                  <div key={idx} className="flex justify-between py-3 text-xs font-light">
-                    <span className="text-gray-400 font-mono">{item.years}</span>
-                    <div className="text-right">
-                      <span className="block font-medium text-white">{item.role}</span>
-                      <span className="block text-[10px] text-gray-500">{item.company}</span>
-                    </div>
-                  </div>
-                ))}
-              </div>
+            {/* Name centered at bottom */}
+            <div className="relative z-10 text-xl md:text-2xl font-bold tracking-wide text-white">
+              Madan Gowda
             </div>
           </div>
 

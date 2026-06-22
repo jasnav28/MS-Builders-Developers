@@ -103,15 +103,12 @@ export const AnimatedHeading: React.FC<AnimatedHeadingProps> = ({
 export const VexHero: React.FC<{ theme: 'light' | 'dark' }> = ({ theme }) => {
   return (
     <div className="relative w-full h-screen bg-black text-white overflow-hidden select-none">
-      {/* Background Video */}
-      <video
+      {/* Background Image */}
+      <img
         key={theme}
         className="absolute inset-0 w-full h-full object-cover pointer-events-none z-0"
-        src={theme === 'dark' ? '/dark.mp4' : '/light.mp4'}
-        autoPlay
-        loop
-        muted
-        playsInline
+        src={theme === 'dark' ? '/darkbg.webp' : '/lightbg.webp'}
+        alt="Hero Background"
       />
 
       {/* Main Content Layout Container (Centered) */}
@@ -126,34 +123,14 @@ export const VexHero: React.FC<{ theme: 'light' | 'dark' }> = ({ theme }) => {
 
           {/* Tagline in one line, morphing, below the heading */}
           <FadeIn delay={700} duration={1000}>
-            <div className="flex flex-row items-center justify-center text-white font-extrabold tracking-[0.15em] text-sm sm:text-base md:text-lg lg:text-xl drop-shadow-md select-none gap-x-1 sm:gap-x-2">
-              <GooeyText
-                texts={["Dream"]}
-                morphTime={1.2}
-                cooldownTime={1.5}
-                className="w-[50px] sm:w-[65px] md:w-[75px] lg:w-[90px] h-[1.5em] inline-block"
-                containerClassName="h-full w-full"
-                textClassName="text-sm sm:text-base md:text-lg lg:text-xl font-extrabold tracking-[0.15em] text-white"
-              />
-              <span className="text-white/60 select-none">.</span>
-              <GooeyText
-                texts={["Design"]}
-                morphTime={1.2}
-                cooldownTime={1.5}
-                className="w-[60px] sm:w-[75px] md:w-[90px] lg:w-[105px] h-[1.5em] inline-block"
-                containerClassName="h-full w-full"
-                textClassName="text-sm sm:text-base md:text-lg lg:text-xl font-extrabold tracking-[0.15em] text-white"
-              />
-              <span className="text-white/60 select-none">.</span>
-              <GooeyText
-                texts={["Deliver"]}
-                morphTime={1.2}
-                cooldownTime={1.5}
-                className="w-[70px] sm:w-[85px] md:w-[105px] lg:w-[120px] h-[1.5em] inline-block"
-                containerClassName="h-full w-full"
-                textClassName="text-sm sm:text-base md:text-lg lg:text-xl font-extrabold tracking-[0.15em] text-white"
-              />
-            </div>
+            <GooeyText
+              texts={["Dream . Design . Deliver"]}
+              morphTime={1.2}
+              cooldownTime={1.5}
+              className="w-full max-w-xl h-[1.5em] mx-auto"
+              containerClassName="h-full w-full justify-center"
+              textClassName="text-sm sm:text-base md:text-lg lg:text-xl font-extrabold tracking-[0.15em] text-white whitespace-nowrap text-center"
+            />
           </FadeIn>
 
 

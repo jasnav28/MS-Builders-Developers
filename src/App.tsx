@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import AnimatedFeatureSpotlightDemo from './components/feature-spotlight-demo'
 import HoverFooterDemo from './components/hover-footer-demo'
 import InteractiveSelectorDemo from './components/interactive-selector-demo'
@@ -9,6 +9,7 @@ import { ToonHubHero } from './components/ui/toonhub-hero-component'
 import { VexHero } from './components/ui/vex-hero-component'
 import Switch from './components/ui/sky-toggle'
 import FounderShowcase from './components/ui/founder-showcase'
+import Crosshair from './components/ui/crosshair'
 
 function App() {
   const [theme, setTheme] = useState<'light' | 'dark'>(() => {
@@ -32,6 +33,7 @@ function App() {
   };
 
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const heroRef = useRef<HTMLDivElement>(null);
 
   const navItems = [
     { label: 'Home', href: '#vex' },
@@ -45,10 +47,10 @@ function App() {
     <div className="relative min-h-screen bg-black text-white selection:bg-white/30 overflow-y-auto scroll-smooth">
       {/* Global Fixed Header */}
       <header className="fixed top-0 left-0 right-0 z-[100] px-4 md:px-12 lg:px-16 pt-6">
-        <div className="liquid-glass rounded-xl px-4 py-2 flex items-center justify-between relative">
+        <div className="liquid-glass dark:bg-white/[0.07] dark:shadow-[0_0_15px_rgba(255,255,255,0.05)] border border-transparent dark:border-white/10 rounded-xl px-4 py-2 flex items-center justify-between relative">
           {/* Left Logo */}
           <div className="text-2xl font-semibold tracking-tight text-white">
-            MS
+             MS
           </div>
           
           {/* Center Navigation Links (Desktop only) */}
@@ -79,10 +81,10 @@ function App() {
               <span className={`w-4 h-0.5 bg-white rounded-full transition-all duration-300 ${isMobileMenuOpen ? 'transform -rotate-45 -translate-y-1' : ''}`} />
             </button>
           </div>
-
+ 
           {/* Mobile Dropdown Panel (Mobile only) */}
           {isMobileMenuOpen && (
-            <div className="absolute top-[115%] left-0 right-0 md:hidden liquid-glass rounded-xl p-4 flex flex-col gap-3 border border-white/10 shadow-2xl animate-in fade-in slide-in-from-top-4 duration-200">
+            <div className="absolute top-[115%] left-0 right-0 md:hidden liquid-glass dark:bg-white/[0.07] dark:border-white/10 rounded-xl p-4 flex flex-col gap-3 border border-white/10 shadow-2xl animate-in fade-in slide-in-from-top-4 duration-200">
               {navItems.map((item) => (
                 <a
                   key={item.label}
@@ -100,8 +102,9 @@ function App() {
 
 
       {/* 1st: VEX Vision */}
-      <section id="vex" className="w-full h-screen relative border-b border-white/10">
+      <section ref={heroRef} id="vex" className="w-full h-screen relative border-b border-white/10 overflow-hidden">
         <VexHero theme={theme} />
+        <Crosshair containerRef={heroRef} color="#ffffff" />
       </section>
 
       {/* 2nd: Feature Spotlight (About Us) */}

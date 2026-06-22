@@ -24,6 +24,12 @@ export function CalculatorSection() {
     type: 'success',
   });
 
+  // Contact details modal state
+  const [showContactModal, setShowContactModal] = useState<boolean>(false);
+  const [clientName, setClientName] = useState<string>('');
+  const [clientPhone, setClientPhone] = useState<string>('');
+  const [clientLocation, setClientLocation] = useState<string>('');
+
   const triggerToast = (message: string, type: 'success' | 'info' = 'success') => {
     setToast({ visible: true, message, type });
     setTimeout(() => {
@@ -66,6 +72,16 @@ export function CalculatorSection() {
   }, [packageType, sqft, needStandardInterior, needInterior, needAutomation]);
 
   const handleBookSession = () => {
+    setShowContactModal(true);
+  };
+
+  const handleModalSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!clientName.trim() || !clientPhone.trim() || !clientLocation.trim()) {
+      triggerToast('Please fill out all fields to proceed.', 'info');
+      return;
+    }
+
     const packageName = 
       packageType === 'silver' ? 'Silver Package' : 
       packageType === 'gold' ? 'Gold Package' : 
@@ -74,15 +90,20 @@ export function CalculatorSection() {
 
     const details = `Package: ${packageName}, Area: ${sqft} Sqft, Standard Interiors: ${needStandardInterior ? 'Yes' : 'No'}, Premium Interiors: ${needInterior ? 'Yes' : 'No'}, Home Automation: ${needAutomation ? 'Yes' : 'No'}. Estimated Cost: Rs ${prices.msBuilders.toLocaleString('en-IN')}`;
     
+    // Construct full WhatsApp message
+    const fullMessage = `Hello MS Builders, I used your Project Calculator: ${details}\n\nClient Details:\nName: ${clientName.trim()}\nMobile: ${clientPhone.trim()}\nLocation: ${clientLocation.trim()}`;
+
     // Copy estimate to clipboard
-    navigator.clipboard.writeText(details).catch(() => {});
+    navigator.clipboard.writeText(fullMessage).catch(() => {});
     
-    triggerToast(`Cost Estimation of Rs ${prices.msBuilders.toLocaleString('en-IN')} copied to clipboard! Opening WhatsApp...`);
+    triggerToast(`Details & Cost Estimation copied! Opening WhatsApp...`);
+    
+    setShowContactModal(false);
     
     // Open Whatsapp with details prefilled after a slight delay
     setTimeout(() => {
-      window.open(`https://wa.me/919743399992?text=Hello%20MS%20Builders,%20I%20used%20your%20Project%20Calculator:%20${encodeURIComponent(details)}`, '_blank');
-    }, 1500);
+      window.open(`https://wa.me/919743399992?text=${encodeURIComponent(fullMessage)}`, '_blank');
+    }, 1200);
   };
 
   // Package Details content mapping
@@ -441,10 +462,10 @@ export function CalculatorSection() {
             className="relative p-8 lg:p-12 border-t lg:border-t-0 lg:border-l border-black/10 dark:border-white/10 flex flex-col justify-between min-h-[717.98px] bg-cover bg-center overflow-hidden transition-all duration-500"
             style={{ 
               backgroundImage: `url(${
-                packageType === 'silver' ? '/ba.png' :
-                packageType === 'gold' ? '/lilba.png' :
-                packageType === 'commercial' ? '/ca.png' :
-                '/lux.png'
+                packageType === 'silver' ? '/ba.webp' :
+                packageType === 'gold' ? '/lilba.webp' :
+                packageType === 'commercial' ? '/ca.webp' :
+                '/lux.webp'
               })`
             }}
           >
@@ -529,6 +550,114 @@ export function CalculatorSection() {
               <p className="text-xs md:text-sm font-medium leading-snug">{toast.message}</p>
             </div>
           </motion.div>
+        )}
+      </AnimatePresence>
+
+      {/* Contact Details Modal */}
+      <AnimatePresence>
+        {showContactModal && (
+          <div className="fixed inset-0 z-[200] flex items-center justify-center p-4">
+            {/* Backdrop Blur */}
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              onClick={() => setShowContactModal(false)}
+              className="absolute inset-0 bg-black/60 backdrop-blur-sm"
+            />
+
+            {/* Modal Box */}
+            <motion.div
+              initial={{ opacity: 0, scale: 0.95, y: 20 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              exit={{ opacity: 0, scale: 0.95, y: 20 }}
+              className="relative bg-white dark:bg-[#121212] border border-black/10 dark:border-white/10 rounded-3xl p-6 md:p-8 max-w-md w-full shadow-2xl z-10 overflow-hidden"
+            >
+              {/* Header */}
+              <div className="flex items-center justify-between pb-4 border-b border-black/10 dark:border-white/10">
+                <h3 className="text-xl font-bold text-foreground dark:text-white">
+                  Contact Details
+                </h3>
+                <button
+                  type="button"
+                  onClick={() => setShowContactModal(false)}
+                  className="text-gray-400 hover:text-gray-600 dark:hover:text-white transition-colors cursor-pointer"
+                  aria-label="Close modal"
+                >
+                  <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
+                  </svg>
+                </button>
+              </div>
+
+              {/* Form */}
+              <form onSubmit={handleModalSubmit} className="mt-6 space-y-4">
+                <div className="space-y-1">
+                  <label htmlFor="client-name" className="text-xs font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wider">
+                    Full Name
+                  </label>
+                  <input
+                    id="client-name"
+                    type="text"
+                    required
+                    value={clientName}
+                    onChange={(e) => setClientName(e.target.value)}
+                    placeholder="e.g. Rahul Sharma"
+                    className="w-full px-4 py-3 rounded-xl border border-black/10 dark:border-white/10 bg-transparent text-foreground dark:text-white focus:outline-none focus:border-[#FF5656] focus:ring-1 focus:ring-[#FF5656] transition-all"
+                  />
+                </div>
+
+                <div className="space-y-1">
+                  <label htmlFor="client-phone" className="text-xs font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wider">
+                    Mobile Number
+                  </label>
+                  <input
+                    id="client-phone"
+                    type="tel"
+                    required
+                    value={clientPhone}
+                    onChange={(e) => setClientPhone(e.target.value)}
+                    placeholder="e.g. 9876543210"
+                    className="w-full px-4 py-3 rounded-xl border border-black/10 dark:border-white/10 bg-transparent text-foreground dark:text-white focus:outline-none focus:border-[#FF5656] focus:ring-1 focus:ring-[#FF5656] transition-all"
+                  />
+                </div>
+
+                <div className="space-y-1">
+                  <label htmlFor="client-location" className="text-xs font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wider">
+                    Project Location
+                  </label>
+                  <input
+                    id="client-location"
+                    type="text"
+                    required
+                    value={clientLocation}
+                    onChange={(e) => setClientLocation(e.target.value)}
+                    placeholder="e.g. Bangalore, Indiranagar"
+                    className="w-full px-4 py-3 rounded-xl border border-black/10 dark:border-white/10 bg-transparent text-foreground dark:text-white focus:outline-none focus:border-[#FF5656] focus:ring-1 focus:ring-[#FF5656] transition-all"
+                  />
+                </div>
+
+                <div className="pt-4 flex gap-3">
+                  <button
+                    type="button"
+                    onClick={() => setShowContactModal(false)}
+                    className="px-5 py-3 rounded-xl border border-black/10 dark:border-white/10 text-gray-600 dark:text-gray-400 hover:bg-black/5 dark:hover:bg-white/5 font-semibold transition-all cursor-pointer"
+                  >
+                    Cancel
+                  </button>
+                  <button
+                    type="submit"
+                    className="flex-1 bg-[#FF5656] hover:bg-[#FF5656]/90 text-white font-bold py-3 rounded-xl transition-all shadow-lg hover:shadow-xl shadow-[#FF5656]/20 flex items-center justify-center gap-2 hover:-translate-y-[2px] cursor-pointer"
+                  >
+                    <span>Proceed to WhatsApp</span>
+                    <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                    </svg>
+                  </button>
+                </div>
+              </form>
+            </motion.div>
+          </div>
         )}
       </AnimatePresence>
     </div>
